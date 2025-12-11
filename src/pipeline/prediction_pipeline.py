@@ -15,7 +15,7 @@ class PredictionPipelineConfig:
     prediction_output_dirname: str = 'Predictions'
     prediction_output_filename: str = "prediction_file.csv"
     model_file_path: str = os.path.join(artifact_folder, 'model.pkl')
-    preprocessor_file_path: str = os.path.join(artifact_folder, 'preprocessor.pkl')
+    preprocessor_file_path: str = os.path.join(artifact_folder, 'data_transformation', 'preprocessor.pkl')
     prediction_file_path: str = os.path.join(prediction_output_dirname, prediction_output_filename)
 
 class PredictionPipeline:
@@ -42,7 +42,7 @@ class PredictionPipeline:
 
         try:
             model = self.utils.load_object(self.prediction_pipeline_config.model_file_path)
-            preprocessor = self.utils.load_object(file_path = self.prediction_pipeline_config.preprocessor_path)
+            preprocessor = self.utils.load_object(file_path = self.prediction_pipeline_config.preprocessor_file_path)
 
             transformed_X = preprocessor.transform(features)
 

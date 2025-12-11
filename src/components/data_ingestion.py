@@ -7,7 +7,7 @@ from zipfile import Path
 from src.constant import *
 from src.exception import CustomException
 from src.logger import logging
-from utils.main_utils import MainUtils
+from src.utils.main_utils import MainUtils
 from dataclasses import dataclass
 
 @dataclass
@@ -25,7 +25,7 @@ class DataIngestion:
         try:
             client = MongoClient(MONGODB_URL)
             
-            collection_name = mongo_client[db_name][collection_name]
+            collection_name = client[db_name][collection_name]
             
             df = pd.DataFrame(list(collection_name.find()))
             

@@ -82,11 +82,10 @@ class ModelTrainer:
     def finetune_best_model(self, X_train,
                             y_train,
                             best_model_name,
-                            best_model_object,
-                            best_model_name)->object:
+                            best_model_object)->object:
         try:
 
-            model_params_grid = self.utils.read_yaml_file(self.model_trainer_config.model_config_file_path)["model_selection"][best_model_name]["search_param_grid"]
+            model_params_grid = self.utils.read_yaml_file(self.model_trainer_config.model_config_file_path)["model_selection"]["model"][best_model_name]["search_param_grid"]
 
             grid_search = GridSearchCV(best_model_object, model_params_grid, cv=5, n_jobs=-1, verbose=1)
             grid_search.fit(X_train, y_train)
@@ -113,7 +112,8 @@ class ModelTrainer:
 
             logging.info(f"Extracting model config file path")
 
-            model_report: dict = self.evaluate_models(X_train, y_train, models=self.models)
+            model_report: dict = self.utils.evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test,
+                                                       models=self.models, param_grid=self.utils.read_yaml_file(self.model_trainer_config.model_config_file_path)["model_selection"]["model"])
             
             ## To get best model score from dict
 
@@ -145,7 +145,7 @@ class ModelTrainer:
             os.makedirs(os.path.dirname(self.model_trainer_config.trained_model_path), exist_ok=True)
             self.utils.save_object(file_path=self.model_trainer_config.trained_model_path, obj=best_model)
 
-            return self.model_trainer_config.trained_model_path
+            return self.model_trainer_config.trained_model_path, best_model_test_score
 
         except Exception as e:
             raise CustomException(e, sys)
