@@ -53,13 +53,13 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t ${{ secrets.AWS_ECR_REPO_URI}}:$IMAGE_TAG.
+        docker build -t ${{ secrets.AWS_ECR_REPO_URI}}:$IMAGE_TAG .
         docker push ${{ secrets.AWS_ECR_REPO_URI}}:$IMAGE_TAG
 
-  Continuous Deployment:
+  Continuous-Deployment:
     name: Continuous Deployment
     needs: build-and-push-ecr-image
-    runs-on: self hosted
+    runs-on: self-hosted
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -75,14 +75,7 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Pull latest images
-      run: |
         docker pull ${{ secrets.AWS_ECR_REPO_URI }}:$IMAGE_TAG
-      with:
-        cluster: ${{ secrets.AWS_ECS_CLUSTER }}
-        service: ${{ secrets.AWS_ECS_SERVICE }}
-        task-definition: ${{ secrets.AWS_ECS_TASK_DEFINITION }}
-        image: ${{ secrets.AWS_ECR_REPO_URI }}:$IMAGE_TAG
 
     # - name: Stop and remove visibility container if running
     #   run: |

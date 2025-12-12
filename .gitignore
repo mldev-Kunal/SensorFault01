@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#git-filter-repo
+expressions.txt
+
 # Distribution / packaging
 .Python
 build/
