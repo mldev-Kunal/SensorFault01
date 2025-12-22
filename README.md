@@ -1,9 +1,11 @@
 # Sensor Fault Detection(Wafer production)
 
 ## 🚀 Deployment
-[![Deployed on AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](http://13.61.16.83:8080)
+[![Deployed on AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)]
 
-**Access the live application for new predictions here:** [Wafer Precision ML Tool]([YOUR_AWS_ENDPOINT_URL_HERE](http://13.61.16.83:8080))
+**Access the live application for new predictions here:** [Wafer Fault Detection_Tool](http://13.61.16.83:8080/predict)
+
+**For home page - http://13.61.16.83:8080 **
 
 ## Background
 
