@@ -5,6 +5,8 @@
 
 **Access the live application deployed on AWS EC2 for new predictions here:** [Wafer Fault Detection_Tool](http://13.61.16.83:8080/predict)
 
+Test dataset is given in repository.
+
 For home page - http://13.61.16.83:8080
 
 ## Background
