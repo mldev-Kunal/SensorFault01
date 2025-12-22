@@ -5,7 +5,7 @@
 
 **Access the live application for new predictions here:** [Wafer Fault Detection_Tool](http://13.61.16.83:8080/predict)
 
-**For home page - http://13.61.16.83:8080 **
+For home page - http://13.61.16.83:8080
 
 ## Background
 
@@ -15,7 +15,7 @@ Doping & Ion Implantation: Modifying electrical properties.
 
 Etching & Deposition: Removing or adding thin-film layers.
 
-Photolithography: Patterning the micro-circuitry.
+Photolithography: Patterning the micro-circuitry (ASML EUV dominance).
 
 Once processed, wafers are diced into individual chips or cells and packaged for final use.
 
@@ -34,7 +34,7 @@ High Stakes: Because photovoltaic power generation requires precision technology
 ## Solution Proposed
 This project implements an end-to-end Machine Learning pipeline designed to process high-dimensional sensor data directly from the wafers. Data fetched by wafers is to be passed through the machine learning pipeline and it is to be determined whether the wafer at hand is faulty or not apparently obliterating the need and thus cost of hiring manual labour.
 
-### By leveraging predictive modeling, we can determine the health of a wafer in real-time without physical intervention. This solution:
+By leveraging predictive modeling, we can determine the health of a wafer in real-time without physical intervention. This solution:
 
 Eliminates the need for constant manual monitoring.
 
