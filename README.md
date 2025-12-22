@@ -3,7 +3,7 @@
 ## 🚀 Deployment
 [![Deployed on AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)]
 
-**Access the live application for new predictions here:** [Wafer Fault Detection_Tool](http://13.61.16.83:8080/predict)
+**Access the live application deployed on AWS EC2 for new predictions here:** [Wafer Fault Detection_Tool](http://13.61.16.83:8080/predict)
 
 For home page - http://13.61.16.83:8080
 
