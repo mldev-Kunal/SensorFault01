@@ -477,7 +477,97 @@ body {
     animation: pulse 1.5s infinite;
 }
 
+/* Success & Error Feedback States */
+.success-state, .error-state {
+    display: none;
+    text-align: center;
+    padding: 35px 20px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.success-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.15);
+    border: 2px solid var(--accent-emerald);
+    color: var(--accent-emerald);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.error-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(244, 63, 94, 0.15);
+    border: 2px solid var(--accent-rose);
+    color: var(--accent-rose);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 0 30px rgba(244, 63, 94, 0.3);
+}
+
+.success-title, .error-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 8px;
+}
+
+.success-desc {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.error-desc {
+    color: var(--accent-rose);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.filename-chip {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+.btn-reset {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-title);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.btn-reset:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-indigo);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
 /* Architecture Features */
+
 .features-section {
     margin-bottom: 40px;
 }
