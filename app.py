@@ -36,6 +36,17 @@ def upload():
     except Exception as e:
         raise CustomException(e, sys)
 
+@app.route('/download-sample')
+def download_sample():
+    try:
+        sample_path = os.path.join(os.getcwd(), "synthetic_wafer_test_dataset_24 _rows.csv")
+        if os.path.exists(sample_path):
+            return send_file(sample_path, download_name="sample_wafer_test_dataset.csv", as_attachment=True)
+        return "Sample dataset not found", 404
+    except Exception as e:
+        raise CustomException(e, sys)
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)

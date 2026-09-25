@@ -1,52 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Wafer fault detection</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wafer Sensor Fault Detection | AI Diagnostic System</title>
+    <meta name="description" content="Production-ready machine learning pipeline for semiconductor wafer sensor fault classification across 590 telemetry channels.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-
 <body>
 
-    <!-- partial:index.partial.html -->
-    <form action="/predict" method="post" enctype="multipart/form-data">
-        <h1 class="title">Upload CSV for the prediction</h1>
-        <div class="frame">
-            <div class="center">
-                <div class="title">
-                    <h1>Drop file to upload</h1>
+    <!-- Ambient Glowing Accents -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <main class="main-wrapper">
+
+        <!-- Header -->
+        <header class="header-section">
+            <div class="pill-badge">
+                <span class="status-dot"></span>
+                <span>Live Diagnostic Engine • Semiconductor QA</span>
+            </div>
+            <h1 class="main-title">
+                Wafer <span class="gradient-text">Sensor Fault Detection</span>
+            </h1>
+            <p class="sub-title">
+                High-precision machine learning telemetry analysis across 590 manufacturing sensor channels to classify wafer integrity and prevent silicon yield loss.
+            </p>
+        </header>
+
+        <!-- Technical Metrics Grid -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📡</div>
+                <div>
+                    <div class="stat-val">590</div>
+                    <div class="stat-lbl">Sensor Telemetry Channels</div>
                 </div>
-
-
-
-                <div class="dropzone">
-                    <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-                    <input type="file" class="upload-input" name="file" accept=".csv">
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div>
+                    <div class="stat-val">XGBoost</div>
+                    <div class="stat-lbl">Tuned Ensemble Classifier</div>
                 </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div>
+                    <div class="stat-val">&lt; 500 ms</div>
+                    <div class="stat-lbl">Real-Time Inference</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div>
+                    <div class="stat-val">Binary Spec</div>
+                    <div class="stat-lbl">-1: Normal | +1: Fault</div>
+                </div>
+            </div>
+        </section>
 
-
-                <button type="submit" class="btn" name="uploadbutton">Upload file</button>
-
+        <!-- Main Workspace Upload Card -->
+        <section class="upload-card">
+            <div class="card-header">
+                <div class="card-title-group">
+                    <h2>Sensor Batch Telemetry Ingestion</h2>
+                    <p>Upload a production CSV batch with wafer sensor readings</p>
+                </div>
+                <span class="format-chip">CSV FORMAT ONLY</span>
             </div>
 
+            <form id="predictionForm" action="/predict" method="POST" enctype="multipart/form-data">
+                
+                <!-- Interactive Dropzone -->
+                <div class="dropzone-container" id="dropzone">
+                    <input type="file" id="fileInput" name="file" accept=".csv" required>
+                    <div class="upload-icon-wrapper">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3 class="dropzone-title">Drag & drop your sensor CSV here, or <span>browse files</span></h3>
+                    <p class="dropzone-subtitle">590 continuous sensor metrics per wafer row</p>
+                </div>
 
-        </div>
+                <!-- Selected File Display -->
+                <div class="file-selected-box" id="fileSelectedBox">
+                    <div class="file-info-left">
+                        <div class="file-badge-icon">✓</div>
+                        <div>
+                            <div class="file-name" id="fileNameDisplay">dataset.csv</div>
+                            <div class="file-size" id="fileSizeDisplay">0 KB • Ready for inference</div>
+                        </div>
+                    </div>
+                    <button type="button" class="clear-btn" id="clearFileBtn">Remove file</button>
+                </div>
 
+                <!-- Action Buttons -->
+                <div class="action-buttons" id="actionButtons">
+                    <button type="submit" class="btn-primary" id="submitBtn" disabled>
+                        <span>Run Fault Diagnostic Analysis</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                    <a href="/download-sample" class="btn-secondary" title="Download verified test CSV to try immediately">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Download Sample CSV (24 Wafers)</span>
+                    </a>
+                </div>
 
-    </form>
-    <!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
+                <!-- Loading / Diagnostics State -->
+                <div class="loading-state" id="loadingState">
+                    <div class="radar-spinner"></div>
+                    <div class="loading-text">Analyzing 590 Sensor Channels...</div>
+                    <div class="loading-steps" id="loadingStepMsg">Running imputation and XGBoost classification pipeline...</div>
+                </div>
 
+            </form>
+        </section>
 
-    <!-- NO JS ADDED YET -->
-    <!-- partial -->
-    <script src='https://100dayscss.com/codepen/js/jquery.min.js'></script>
-    <script src="./script.js"></script>
+        <!-- Pipeline Architecture Details -->
+        <section class="features-section">
+            <h2 class="section-heading">How the Diagnostic Pipeline Works</h2>
+            <div class="architecture-grid">
+                <div class="arch-card">
+                    <div class="arch-header">
+                        <span class="arch-number">STEP 01</span>
+                        <h3>Schema Validation</h3>
+                    </div>
+                    <p>Scans telemetry inputs to confirm 590 distinct wafer sensor features and handles missing/corrupted columns automatically.</p>
+                </div>
+                <div class="arch-card">
+                    <div class="arch-header">
+                        <span class="arch-number">STEP 02</span>
+                        <h3>Imputation & Transformation</h3>
+                    </div>
+                    <p>Applies robust statistical preprocessing and median imputation to bridge missing sensor readings without introducing artificial variance.</p>
+                </div>
+                <div class="arch-card">
+                    <div class="arch-header">
+                        <span class="arch-number">STEP 03</span>
+                        <h3>XGBoost Classification</h3>
+                    </div>
+                    <p>Evaluates gradient-boosted decision trees to classify each wafer as normal (-1) or defective (+1) and streams back an annotated CSV.</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Footer -->
+        <footer class="footer-section">
+            <p>
+                Semiconductor Wafer Sensor Fault Detection System • Built by <a href="https://github.com/mldev-Kunal" target="_blank" rel="noopener">mldev-Kunal</a> • 
+                <a href="https://github.com/mldev-Kunal/SensorFault01" target="_blank" rel="noopener">View GitHub Source</a>
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const dropzone = document.getElementById('dropzone');
+        const fileSelectedBox = document.getElementById('fileSelectedBox');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const fileSizeDisplay = document.getElementById('fileSizeDisplay');
+        const clearFileBtn = document.getElementById('clearFileBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const form = document.getElementById('predictionForm');
+        const actionButtons = document.getElementById('actionButtons');
+        const loadingState = document.getElementById('loadingState');
+        const loadingStepMsg = document.getElementById('loadingStepMsg');
+
+        // Format bytes helper
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+
+        // Handle File Selection
+        function updateFileDetails(file) {
+            if (file) {
+                fileNameDisplay.textContent = file.name;
+                fileSizeDisplay.textContent = `${formatBytes(file.size)} • Ready for inference`;
+                fileSelectedBox.style.display = 'flex';
+                submitBtn.removeAttribute('disabled');
+            } else {
+                fileSelectedBox.style.display = 'none';
+                submitBtn.setAttribute('disabled', 'true');
+            }
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                updateFileDetails(e.target.files[0]);
+            }
+        });
+
+        // Clear Selection
+        clearFileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            fileInput.value = '';
+            updateFileDetails(null);
+        });
+
+        // Drag & Drop visual highlights
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.add('drag-active');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('drag-active');
+            }, false);
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                updateFileDetails(files[0]);
+            }
+        });
+
+        // Form Submit Loading Feedback
+        form.addEventListener('submit', () => {
+            dropzone.style.display = 'none';
+            fileSelectedBox.style.display = 'none';
+            actionButtons.style.display = 'none';
+            loadingState.style.display = 'block';
+
+            const steps = [
+                "Ingesting 590 telemetry channels...",
+                "Applying statistical imputation...",
+                "Running XGBoost anomaly classification...",
+                "Generating prediction CSV download..."
+            ];
+            let idx = 0;
+            setInterval(() => {
+                idx = (idx + 1) % steps.length;
+                loadingStepMsg.textContent = steps[idx];
+            }, 1200);
+        });
+    </script>
 
 </body>
-
 </html>
