@@ -3,208 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wafer Sensor Fault Detection | AI Diagnostic System</title>
-    <meta name="description" content="Production-ready machine learning pipeline for semiconductor wafer sensor fault classification across 590 telemetry channels.">
+    <title>WAFER SENSOR FAULT DETECTION // TELEMETRY ANALYSIS</title>
+    <meta name="description" content="Semiconductor wafer sensor fault detection system powered by XGBoost and Scikit-Learn across 590 telemetry channels.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
-    <!-- Ambient Glowing Accents -->
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
-    <div class="ambient-glow glow-3"></div>
 
     <main class="main-wrapper">
 
         <!-- Header -->
         <header class="header-section">
-            <div class="pill-badge">
-                <span class="status-dot"></span>
-                <span>Live Diagnostic Engine • Semiconductor QA</span>
+            <div class="system-tag">
+                <span class="status-beacon"></span>
+                <span>SYSTEM ACTIVE // TELEMETRY ANALYSIS ENGINE</span>
             </div>
-            <h1 class="main-title">
-                Wafer <span class="gradient-text">Sensor Fault Detection</span>
-            </h1>
+            <h1 class="main-title">WAFER FAULT DETECTION</h1>
             <p class="sub-title">
-                High-precision machine learning telemetry analysis across 590 manufacturing sensor channels to classify wafer integrity and prevent silicon yield loss.
+                High-precision machine learning telemetry analysis across 590 manufacturing sensor channels. Rapid binary fault classification for semiconductor quality assurance.
             </p>
         </header>
 
-        <!-- Technical Metrics Grid -->
-        <section class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">📡</div>
-                <div>
-                    <div class="stat-val">590</div>
-                    <div class="stat-lbl">Sensor Telemetry Channels</div>
-                </div>
+        <!-- Precision Telemetry Grid -->
+        <section class="telemetry-grid">
+            <div class="telemetry-cell">
+                <div class="telemetry-tag">// CHANNELS</div>
+                <div class="telemetry-val">590</div>
+                <div class="telemetry-sub">Sensor Telemetry</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon">⚡</div>
-                <div>
-                    <div class="stat-val">XGBoost</div>
-                    <div class="stat-lbl">Tuned Ensemble Classifier</div>
-                </div>
+            <div class="telemetry-cell">
+                <div class="telemetry-tag">// MODEL</div>
+                <div class="telemetry-val">XGBOOST</div>
+                <div class="telemetry-sub">Ensemble Classifier</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon">⏱️</div>
-                <div>
-                    <div class="stat-val">&lt; 500 ms</div>
-                    <div class="stat-lbl">Real-Time Inference</div>
-                </div>
+            <div class="telemetry-cell">
+                <div class="telemetry-tag">// LATENCY</div>
+                <div class="telemetry-val">&lt; 500MS</div>
+                <div class="telemetry-sub">Inference Pipeline</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon">🎯</div>
-                <div>
-                    <div class="stat-val">Binary Spec</div>
-                    <div class="stat-lbl">-1: Normal | +1: Fault</div>
-                </div>
+            <div class="telemetry-cell">
+                <div class="telemetry-tag">// SPECIFICATION</div>
+                <div class="telemetry-val">±1 SPEC</div>
+                <div class="telemetry-sub">-1 Pass | +1 Defect</div>
             </div>
         </section>
 
-        <!-- Main Workspace Upload Card -->
-        <section class="upload-card">
-            <div class="card-header">
-                <div class="card-title-group">
-                    <h2>Sensor Batch Telemetry Ingestion</h2>
-                    <p>Upload a production CSV batch with wafer sensor readings</p>
-                </div>
-                <span class="format-chip">CSV FORMAT ONLY</span>
+        <!-- Main Workspace Ingestion Panel -->
+        <section class="workspace-panel">
+            <div class="panel-bar">
+                <div class="panel-title">01 // BATCH TELEMETRY INGESTION</div>
+                <div class="panel-spec">[ CSV FORMAT // MAX 50MB ]</div>
             </div>
 
             <form id="predictionForm" action="/predict" method="POST" enctype="multipart/form-data">
                 
-                <!-- Interactive Dropzone -->
-                <div class="dropzone-container" id="dropzone">
+                <!-- Minimalist Dropzone -->
+                <div class="dropzone-box" id="dropzone">
                     <input type="file" id="fileInput" name="file" accept=".csv" required>
-                    <div class="upload-icon-wrapper">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                    </div>
-                    <h3 class="dropzone-title">Drag & drop your sensor CSV here, or <span>browse files</span></h3>
-                    <p class="dropzone-subtitle">590 continuous sensor metrics per wafer row</p>
+                    <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <div class="dropzone-label">DROP SENSOR CSV LOG HERE, OR <span>BROWSE</span></div>
+                    <div class="dropzone-hint">EXPECTS 590 CONTINUOUS TELEMETRY COLUMNS PER WAFER ROW</div>
                 </div>
 
-                <!-- Selected File Display -->
-                <div class="file-selected-box" id="fileSelectedBox">
-                    <div class="file-info-left">
-                        <div class="file-badge-icon">✓</div>
-                        <div>
-                            <div class="file-name" id="fileNameDisplay">dataset.csv</div>
-                            <div class="file-size" id="fileSizeDisplay">0 KB • Ready for inference</div>
-                        </div>
+                <!-- File Record Bar -->
+                <div class="file-record-bar" id="fileSelectedBox">
+                    <div class="file-meta-left">
+                        <span class="file-indicator">READY</span>
+                        <span class="file-name-text" id="fileNameDisplay">WAFER_BATCH.CSV</span>
+                        <span class="file-size-text" id="fileSizeDisplay">[ 0 KB ]</span>
                     </div>
-                    <button type="button" class="clear-btn" id="clearFileBtn">Remove file</button>
+                    <button type="button" class="btn-remove" id="clearFileBtn">[ DISCARD ]</button>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="action-buttons" id="actionButtons">
-                    <button type="submit" class="btn-primary" id="submitBtn" disabled>
-                        <span>Run Fault Diagnostic Analysis</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
+                <!-- Controls -->
+                <div class="controls-row" id="actionButtons">
+                    <button type="submit" class="btn-spacex-primary" id="submitBtn" disabled>
+                        <span>EXECUTE DIAGNOSTICS</span>
+                        <span>→</span>
                     </button>
-                    <a href="/download-sample" class="btn-secondary" title="Download verified test CSV to try immediately">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        <span>Download Sample CSV (24 Wafers)</span>
+                    <a href="/download-sample" class="btn-spacex-secondary" title="Download sample sensor dataset">
+                        <span>SAMPLE DATASET [24 WAFERS]</span>
+                        <span>↓</span>
                     </a>
                 </div>
 
-                <!-- Loading / Diagnostics State -->
-                <div class="loading-state" id="loadingState">
-                    <div class="radar-spinner"></div>
-                    <div class="loading-text">Analyzing 590 Sensor Channels...</div>
-                    <div class="loading-steps" id="loadingStepMsg">Running imputation and XGBoost classification pipeline...</div>
+                <!-- Precision Laser Scanner (Loading State) -->
+                <div class="scanner-viewport" id="loadingState">
+                    <div class="scanner-track">
+                        <div class="scanner-laser"></div>
+                    </div>
+                    <div class="scanner-status">RUNNING INFERENCE PIPELINE</div>
+                    <div class="scanner-telemetry-log" id="loadingStepMsg">[ INGESTING 590 TELEMETRY CHANNELS... ]</div>
                 </div>
 
-                <!-- Success State -->
-                <div class="success-state" id="successState">
-                    <div class="success-icon-wrapper">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="success-title">Analysis Completed Successfully!</h3>
-                    <p class="success-desc">Batch telemetry verified & classified. Results downloaded directly to your device.</p>
+                <!-- Success Terminal State -->
+                <div class="terminal-success-state" id="successState">
+                    <div class="status-bracket">// INFERENCE COMPLETE //</div>
+                    <h3 class="terminal-title">DIAGNOSTIC REPORT GENERATED</h3>
+                    <p class="terminal-desc">Batch sensor telemetry evaluated. Results artifact successfully downloaded to client.</p>
                     <div>
-                        <span class="filename-chip" id="downloadedFileName">prediction_file.csv</span>
+                        <span class="artifact-pill" id="downloadedFileName">WAFER_FAULT_PREDICTIONS.CSV</span>
                     </div>
                     <div>
-                        <button type="button" class="btn-reset" id="resetBtn">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="23 4 23 10 17 10"></polyline>
-                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-                            </svg>
-                            <span>Analyze Another Sensor Batch</span>
+                        <button type="button" class="btn-spacex-reset" id="resetBtn">
+                            INITIALIZE NEW BATCH [↺]
                         </button>
                     </div>
                 </div>
 
-                <!-- Error State -->
-                <div class="error-state" id="errorState">
-                    <div class="error-icon-wrapper">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                    </div>
-                    <h3 class="error-title">Inference Execution Error</h3>
-                    <p class="error-desc" id="errorMessage">An unexpected error occurred while analyzing the wafer batch.</p>
-                    <button type="button" class="btn-reset" id="errorResetBtn">
-                        <span>Try Another File</span>
+                <!-- Error Terminal State -->
+                <div class="terminal-error-state" id="errorState">
+                    <div class="status-bracket" style="color: var(--accent-red);">// SYSTEM EXCEPTION //</div>
+                    <h3 class="terminal-title">DIAGNOSTIC PIPELINE FAILED</h3>
+                    <p class="terminal-desc" id="errorMessage" style="color: var(--accent-red);">Telemetry batch format invalid or corrupted.</p>
+                    <button type="button" class="btn-spacex-reset" id="errorResetBtn">
+                        RELOAD INGESTION [↺]
                     </button>
                 </div>
 
             </form>
         </section>
 
-        <!-- Pipeline Architecture Details -->
-        <section class="features-section">
-            <h2 class="section-heading">How the Diagnostic Pipeline Works</h2>
-            <div class="architecture-grid">
-                <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="arch-number">STEP 01</span>
-                        <h3>Schema Validation</h3>
-                    </div>
-                    <p>Scans telemetry inputs to confirm 590 distinct wafer sensor features and handles missing/corrupted columns automatically.</p>
+        <!-- System Architecture Section -->
+        <section class="spec-section">
+            <span class="section-label">// SYSTEM PIPELINE ARCHITECTURE</span>
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <div class="spec-step">STAGE 01 // INGESTION</div>
+                    <h3>SCHEMA VERIFICATION</h3>
+                    <p>Parses telemetry inputs to verify all 590 distinct wafer sensor channels and handles missing column boundaries cleanly.</p>
                 </div>
-                <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="arch-number">STEP 02</span>
-                        <h3>Imputation & Transformation</h3>
-                    </div>
-                    <p>Applies robust statistical preprocessing and median imputation to bridge missing sensor readings without introducing artificial variance.</p>
+                <div class="spec-card">
+                    <div class="spec-step">STAGE 02 // PREPROCESSING</div>
+                    <h3>ROBUST IMPUTATION</h3>
+                    <p>Applies median statistical imputation to preserve natural sensor telemetry distribution without introducing synthetic bias.</p>
                 </div>
-                <div class="arch-card">
-                    <div class="arch-header">
-                        <span class="arch-number">STEP 03</span>
-                        <h3>XGBoost Classification</h3>
-                    </div>
-                    <p>Evaluates gradient-boosted decision trees to classify each wafer as normal (-1) or defective (+1) and streams back an annotated CSV.</p>
+                <div class="spec-card">
+                    <div class="spec-step">STAGE 03 // CLASSIFICATION</div>
+                    <h3>XGBOOST ENSEMBLE</h3>
+                    <p>Gradient-boosted decision trees classify wafer operational state (-1: Pass, +1: Defect) and stream results instantly.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer-section">
-            <p>
-                Semiconductor Wafer Sensor Fault Detection System • Built by <a href="https://github.com/mldev-Kunal" target="_blank" rel="noopener">mldev-Kunal</a> • 
-                <a href="https://github.com/mldev-Kunal/SensorFault01" target="_blank" rel="noopener">View GitHub Source</a>
-            </p>
+        <!-- Minimalist Footer -->
+        <footer class="site-footer">
+            <div>WAFER SENSOR FAULT DETECTION // ML REPO</div>
+            <div>
+                DEV // <a href="https://github.com/mldev-Kunal" target="_blank" rel="noopener">MLDEV-KUNAL</a> • 
+                <a href="https://github.com/mldev-Kunal/SensorFault01" target="_blank" rel="noopener">GITHUB SOURCE</a>
+            </div>
         </footer>
 
     </main>
@@ -228,20 +182,18 @@
         const errorMessage = document.getElementById('errorMessage');
         const errorResetBtn = document.getElementById('errorResetBtn');
 
-        // Format bytes helper
         function formatBytes(bytes) {
-            if (bytes === 0) return '0 Bytes';
+            if (bytes === 0) return '0 BYTES';
             const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const sizes = ['BYTES', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
         }
 
-        // Handle File Selection
         function updateFileDetails(file) {
             if (file) {
-                fileNameDisplay.textContent = file.name;
-                fileSizeDisplay.textContent = `${formatBytes(file.size)} • Ready for inference`;
+                fileNameDisplay.textContent = file.name.toUpperCase();
+                fileSizeDisplay.textContent = `[ ${formatBytes(file.size)} ]`;
                 fileSelectedBox.style.display = 'flex';
                 submitBtn.removeAttribute('disabled');
             } else {
@@ -256,7 +208,6 @@
             }
         });
 
-        // Reset to initial upload state
         function resetAll() {
             fileInput.value = '';
             updateFileDetails(null);
@@ -275,7 +226,7 @@
         resetBtn.addEventListener('click', resetAll);
         errorResetBtn.addEventListener('click', resetAll);
 
-        // Drag & Drop visual highlights
+        // Drag & Drop
         ['dragenter', 'dragover'].forEach(eventName => {
             dropzone.addEventListener(eventName, (e) => {
                 e.preventDefault();
@@ -314,16 +265,16 @@
             errorState.style.display = 'none';
 
             const steps = [
-                "Ingesting 590 telemetry channels...",
-                "Applying statistical imputation...",
-                "Running XGBoost anomaly classification...",
-                "Compiling diagnostic CSV report..."
+                "[ INGESTING 590 TELEMETRY CHANNELS... ]",
+                "[ RUNNING STATISTICAL IMPUTATION... ]",
+                "[ EXECUTING XGBOOST TREE CLASSIFICATION... ]",
+                "[ COMPILING SENSOR FAULT ARTIFACT... ]"
             ];
             let idx = 0;
             const stepInterval = setInterval(() => {
                 idx = (idx + 1) % steps.length;
                 loadingStepMsg.textContent = steps[idx];
-            }, 1200);
+            }, 1100);
 
             const formData = new FormData(form);
 
@@ -336,11 +287,10 @@
                 clearInterval(stepInterval);
 
                 if (!response.ok) {
-                    throw new Error(`Inference service error (HTTP ${response.status})`);
+                    throw new Error(`INFERENCE SERVER ERROR [HTTP ${response.status}]`);
                 }
 
-                // Parse download filename if provided in headers
-                let outputFilename = 'wafer_fault_predictions.csv';
+                let outputFilename = 'WAFER_FAULT_PREDICTIONS.CSV';
                 const disposition = response.headers.get('Content-Disposition');
                 if (disposition && disposition.includes('filename=')) {
                     const match = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(disposition);
@@ -359,15 +309,14 @@
                 a.remove();
                 window.URL.revokeObjectURL(downloadUrl);
 
-                // Transition to Success State!
                 loadingState.style.display = 'none';
-                downloadedFileName.textContent = outputFilename;
+                downloadedFileName.textContent = outputFilename.toUpperCase();
                 successState.style.display = 'block';
 
             } catch (err) {
                 clearInterval(stepInterval);
                 loadingState.style.display = 'none';
-                errorMessage.textContent = err.message || "Failed to process the uploaded wafer sensor dataset.";
+                errorMessage.textContent = err.message || "FAILED TO PROCESS WAFER TELEMETRY DATASET.";
                 errorState.style.display = 'block';
             }
         });
