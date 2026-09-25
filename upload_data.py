@@ -15,7 +15,7 @@ client = MongoClient(uri)
 DATABASE_NAME="ML"
 COLLECTION_NAME='Wafer_fault'
 
-df = pd.read_csv(r'C:\Users\kp224\Downloads\SensorFaultagy\notebooks\wafer_23012020_041211.csv')
+df = pd.read_csv(os.path.join('notebooks', 'wafer_23012020_041211.csv'))
 
 df.drop("Unnamed: 0", axis = 1, inplace = True)
 

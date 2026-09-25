@@ -44,6 +44,14 @@ class PredictionPipeline:
             model = self.utils.load_object(self.prediction_pipeline_config.model_file_path)
             preprocessor = self.utils.load_object(file_path = self.prediction_pipeline_config.preprocessor_file_path)
 
+            try:
+                if hasattr(preprocessor, "named_steps") and "imputer" in preprocessor.named_steps:
+                    imp = preprocessor.named_steps["imputer"]
+                    if hasattr(imp, "statistics_") and imp.statistics_ is not None:
+                        imp.statistics_ = imp.statistics_.astype(float)
+            except Exception:
+                pass
+
             transformed_X = preprocessor.transform(features)
 
             preds = model.predict(transformed_X)

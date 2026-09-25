@@ -19,9 +19,7 @@ python-multipart
 types-s3transfer
 uvicorn
 watchfiles
-websockets
-wincertstore
 xgboost
-neuro-mf
 boto3
 Werkzeug
+gunicorn
